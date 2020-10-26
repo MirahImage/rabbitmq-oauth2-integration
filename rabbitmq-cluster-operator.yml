@@ -21,8 +21,8 @@ spec:
             {default_key, <<"legacy-token-key">>},
             {signing_keys,
               #{<<"legacy-token-key">> => {pem, <<"-----BEGIN PUBLIC KEY-----
-  PUBLICKEYPEMFOOBARLOTSOFLETTERS
-  MULTIPLELINESALLTHEWAYTOTHELEFT
-  REPLACEMEWITHTHEACTUALPEMBLOCK
-  -----END PUBLIC KEY-----">>}}}]}]}
+      PUBLICKEYPEMFOOBARLOTSOFLETTERS
+      MULTIPLELINESALLTHEWAYTOTHELEFT
+      REPLACEMEWITHTHEACTUALPEMBLOCK
+      -----END PUBLIC KEY-----">>}}}]}]}
       ].
