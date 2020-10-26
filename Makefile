@@ -77,3 +77,10 @@ curl: ## Run curl with a JWT token. Syntax: make curl url=http://localhost:15672
 
 open: ## Open the browser and login the user with the JWT Token. e.g: make open username=rabbit_admin password=rabbit_admin
 	@./bin/open_url $(username) $(password)
+
+deploy-k8s: ## Deploy a kind cluster, the cluster-operator, and an RMQ cluster with oauth enabled
+	@kind create cluster
+	@kubectl apply -f https://github.com/rabbitmq/cluster-operator/releases/latest/download/cluster-operator.yml
+	@kubectl apply -f rabbitmq-cluster-operator.yml
+	@echo "To access the management UI, run:"
+	@echo "kubectl port-forward service/service/oauth-configuration-rabbitmq-client &>/dev/null &"
