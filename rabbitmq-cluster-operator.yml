@@ -7,20 +7,22 @@ spec:
   rabbitmq:
     additionalPlugins:
     - rabbitmq_auth_backend_oauth2
-    additionalConfig: |
-    {rabbit, [{auth_backends, [rabbit_auth_backend_oauth2, rabbit_auth_backend_internal]}]},
-    {rabbitmq_management, [
-       {enable_uaa, true},
-       {uaa_client_id, "OAUTH_CLIENT"},
-       {uaa_location, "http://OAUTH2SERVER:PORT"}
-    ]},
-    {rabbitmq_auth_backend_oauth2, [
-      {resource_server_id, <<"rabbitmq">>},
-      {key_config, [
-        {default_key, <<"legacy-token-key">>},
-        {signing_keys,
-          #{<<"legacy-token-key">> => {pem, <<"-----BEGIN PUBLIC KEY-----
-PUBLICKEYPEMFOOBARLOTSOFLETTERS
-MULTIPLELINESALLTHEWAYTOTHELEFT
-REPLACEMEWITHTHEACTUALPEMBLOCK
------END PUBLIC KEY-----">>}}}]}]}
+    advancedConfig: |
+      [
+        {rabbit, [{auth_backends, [rabbit_auth_backend_oauth2, rabbit_auth_backend_internal]}]},
+        {rabbitmq_management, [
+          {enable_uaa, true},
+          {uaa_client_id, "OAUTH_CLIENT"},
+          {uaa_location, "http://OAUTH2SERVER:PORT"}
+        ]},
+        {rabbitmq_auth_backend_oauth2, [
+          {resource_server_id, <<"rabbitmq">>},
+          {key_config, [
+            {default_key, <<"legacy-token-key">>},
+            {signing_keys,
+              #{<<"legacy-token-key">> => {pem, <<"-----BEGIN PUBLIC KEY-----
+  PUBLICKEYPEMFOOBARLOTSOFLETTERS
+  MULTIPLELINESALLTHEWAYTOTHELEFT
+  REPLACEMEWITHTHEACTUALPEMBLOCK
+  -----END PUBLIC KEY-----">>}}}]}]}
+      ].
