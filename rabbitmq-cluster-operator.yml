@@ -1,0 +1,28 @@
+apiVersion: rabbitmq.com/v1beta1
+kind: RabbitmqCluster
+metadata:
+  name: oauth-configuration
+spec:
+  replicas: 1
+  rabbitmq:
+    additionalPlugins:
+    - rabbitmq_auth_backend_oauth2
+    additionalConfig: |
+    {rabbit, [{auth_backends, [rabbit_auth_backend_oauth2, rabbit_auth_backend_internal]}]},
+    {rabbitmq_management, [
+       {enable_uaa, true},
+       {uaa_client_id, "rabbit_client"},
+       {uaa_location, "http://localhost:8080/authorization"}
+    ]},
+    {rabbitmq_auth_backend_oauth2, [
+      {resource_server_id, <<"rabbitmq">>},
+      {key_config, [
+        {default_key, <<"legacy-token-key">>},
+        {signing_keys,
+          #{<<"legacy-token-key">> => {pem, <<"-----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxr91/DGMGqDstXLZxnjahNQJlGzKWfwn4gu
+n5ffGQP7tczq5O6iDzH3IfAINr1BcujyVcPoE+i7ac54yodAJ8zq/BpOl2d7RLZU1JtWIrSnJU8NIc5L0jkNTdrl
+fm+kxw1gqV6jkCt3+IQEUZvpuVX+aJbV+lDnrjO8f3I22ZFmwhnqBb6VxF0TiMk2IJ/ACM1bxoKKd9bDgk
+XUKe8QIl56UZ/lSdhF7IQWMWhgVgfH2qxtqrleRuna2TL9US8L5Cb9OIbHEKjOZPDSrlUNKq1dE6kb57B
+r9j8xkYmXSW0m2aW1aeY6Ti74FtoCM2BsR1Xu3iNiLhJzLjeI517atBwIDAQAB
+-----END PUBLIC KEY-----">>}}}]}]}
