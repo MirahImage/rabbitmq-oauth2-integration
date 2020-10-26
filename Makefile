@@ -83,4 +83,4 @@ deploy-k8s: ## Deploy a kind cluster, the cluster-operator, and an RMQ cluster w
 	@kubectl apply -f https://github.com/rabbitmq/cluster-operator/releases/latest/download/cluster-operator.yml
 	@kubectl apply -f rabbitmq-cluster-operator.yml
 	@echo "To access the management UI, run:"
-	@echo "kubectl port-forward service/service/oauth-configuration-rabbitmq-client &>/dev/null &"
+	@echo "kubectl port-forward service/oauth-configuration-rabbitmq-client 15672:15672 &>/dev/null &"
