@@ -12,17 +12,31 @@ spec:
         {rabbit, [{auth_backends, [rabbit_auth_backend_oauth2, rabbit_auth_backend_internal]}]},
         {rabbitmq_management, [
           {enable_uaa, true},
-          {uaa_client_id, "OAUTH_CLIENT"},
-          {uaa_location, "http://OAUTH2SERVER:PORT"}
+          {uaa_client_id, "xpkUVJxlL1luUuJHEE0hu2WX4nRWroGT"},
+          {uaa_location, "https://dev-rabbitmq.eu.auth0.com"}
         ]},
         {rabbitmq_auth_backend_oauth2, [
           {resource_server_id, <<"rabbitmq">>},
           {key_config, [
             {default_key, <<"legacy-token-key">>},
             {signing_keys,
-              #{<<"legacy-token-key">> => {pem, <<"-----BEGIN PUBLIC KEY-----
-      PUBLICKEYPEMFOOBARLOTSOFLETTERS
-      MULTIPLELINESALLTHEWAYTOTHELEFT
-      REPLACEMEWITHTHEACTUALPEMBLOCK
-      -----END PUBLIC KEY-----">>}}}]}]}
+              #{<<"legacy-token-key">> => {pem, <<"-----BEGIN CERTIFICATE-----
+      MIIDDTCCAfWgAwIBAgIJUd+tOd6yNeXeMA0GCSqGSIb3DQEBCwUAMCQxIjAgBgNV
+      BAMTGWRldi1yYWJiaXRtcS5ldS5hdXRoMC5jb20wHhcNMjAxMTAzMDk0MTE1WhcN
+      MzQwNzEzMDk0MTE1WjAkMSIwIAYDVQQDExlkZXYtcmFiYml0bXEuZXUuYXV0aDAu
+      Y29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxRizN/J582JyFLRI
+      I8x1HU92DWRqHXiny5PNxpapM9G+YZCQ7sdDB2P9dWLtB1jVuQ84ucWROT5zJDss
+      kqN1fUmIU4L04feEFDSlMoDdpR/yEBY1NfsiublWdY6j/1Umva88hjyWBeNc89ac
+      unT2Unq03Eu7ycGoG0E8jcdDZiO+xpbS4T6hGTjM4JAizDrp9xYhtbAxDqHvuKoA
+      xKB1bOiQHBeZfQfcBKkr5C4hfcYMjKjnCSYXIDykCIP6Xei63TVP0JfkoKrJ1LQc
+      75gMTnWWc3AjW75LiZYgx7yr3B4RIiogjyh3FSXp/b0IRuegtuc72J1ANgQBEAbY
+      VXibBQIDAQABo0IwQDAPBgNVHRMBAf8EBTADAQH/MB0GA1UdDgQWBBQva3MlnfiY
+      o6fjHzbeoGbzwcaZszAOBgNVHQ8BAf8EBAMCAoQwDQYJKoZIhvcNAQELBQADggEB
+      ABcLG1dnzgbNwQZE5cwwxfPD2nsTEb9OHnxC6yAPu8OyQcy0P/DqILhgQELSMatw
+      SI6rkmAEO2ZFJWbCOtJOBSL7n0lgk3k+jHTB0KhZNHt+PKdRIsxl6nBwFJtMMZfS
+      LSLaxaIO/h4lNPwzlgcFdTW9f6WSaUxauq3fDBrfYG8w62SI0X3Av4CjdpGgOgzg
+      LVBzoQp6xmM8/mWgVjhKFe3t8TsLbEtMtwO3z1eLG5JFTktGqwHtPhBsHkSYJNNQ
+      /OLL4OJDeFRisvIlkdzQWE2o5zm0e6KivTjIWJk2imwBnQCNWr7ZTeu+M+NowmkD
+      3rQdsrR+oJ++0gol+1GdYhA=
+      -----END CERTIFICATE-----">>}}}]}]}
       ].
